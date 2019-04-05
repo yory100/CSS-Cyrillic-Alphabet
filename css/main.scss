@@ -1,0 +1,102 @@
+$color-charcoal: #373737;
+$color-paper: #f4f4f4;
+$box-dimension: 150px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+// Layout
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, $box-dimension);
+  grid-auto-rows: $box-dimension;
+  justify-content: center;
+  margin: 1rem;
+  padding: 0;
+  li {
+    position: relative;
+    border-top: 1px dotted;
+    border-left: 1px dotted;
+    list-style: none;
+  }
+}
+
+//div not nested into container because of left and wright ove
+div {
+  position: absolute;
+  margin: 0 auto;
+  box-sizing: border-box;
+  left: 0;
+  right: 0;
+}
+
+// А
+
+.a {
+  top: $box-dimension / 2 + 10px;
+  border-bottom: 4px solid $color-charcoal;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  height: 2.5px;
+  width: 40%;
+
+  &::before,
+  &::after {
+    background: $color-charcoal;
+    content: "";
+    position: absolute;
+    top: -$box-dimension / 2;
+    height: $box-dimension - 25px;
+    width: 2px;
+  }
+
+  &::before {
+    transform: skewX(-21deg);
+    left: 5.2%;
+  }
+
+  &::after {
+    transform: skewX(21deg);
+    left: 91%;
+  }
+}
+
+// Б
+
+.b {
+  background: $color-charcoal;
+  height: $box-dimension - 25px;
+  width: 4px;
+  top: 12.5px;
+  left: -50px;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+  }
+
+  &::before {
+    border-top: 2px solid $color-charcoal;
+    width: 55px;
+  }
+
+  &::after {
+    border-width: 2px 2px 2px 0;
+    border-color: $color-charcoal;
+    border-style: solid;
+    height: 60px;
+    width: 60px;
+    bottom: 0;
+    border-radius: 0 180% 220% 0 / 0 180% 180% 0;
+  }
+}
